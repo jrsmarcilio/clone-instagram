@@ -3,7 +3,10 @@ import theme from "@/styles/theme";
 
 export const UserPerfilStyled = styled.div`
   width: 100%;
-  height: 100%;
+  height: 50%;
+
+  margin: 0;
+  padding: 0;
 
   display: flex;
   justify-content: center;

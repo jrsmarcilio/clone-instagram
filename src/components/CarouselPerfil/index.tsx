@@ -1,34 +1,14 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Router from 'next/router'
-
 import Carousel from "react-elastic-carousel";
 
-import { CarouselPerfilStyle } from "./styles";
-import api from '@/service/api';
-import React from 'react';
-import { toast } from 'react-toastify';
-
-import { UserCarousel } from '@/interface'
 import { CardContent, Typography } from '@material-ui/core';
 import { CardUserCarousel } from '@/styles/MaterialGuide/'
 
+import { UserCarousel } from '@/interface'
+import { CarouselPerfilStyle } from "./styles";
 
-export default function CarouselPerfil() {
-  const [userCarousel, setUserCarousel] = useState<any[]>([]);
-
-  useEffect(() => {
-    function fetchApiUnsplash() {
-      api.get('search/users?', {
-        params: {
-          query: 'usa',
-          client_id: process.env.NEXT_PUBLIC_UNSPLASH_API_KEY
-        }
-      }).then((response: any) => setUserCarousel(response.data.results)
-      ).catch(error => toast.warning(error.message));
-    }
-    fetchApiUnsplash();
-  }, [])
+export default function CarouselPerfil({ userCarousel }: any) {
 
   const handleRedirectUserPerfil = (username: string) => () => {
     Router.push(`/users/${username}`)
