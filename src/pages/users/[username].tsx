@@ -8,7 +8,6 @@ import {
   Button,
   Grid, Typography,
   CircularProgress,
-  Container,
 } from '@material-ui/core'
 
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
@@ -67,52 +66,50 @@ export default function UserPerfil() {
     <>
       <Header />
       <UserPerfilStyled>
-        <Container>
-          {userInfor.map((user) => (
-            <Grid container direction="row" alignItems="center" justifyContent="center" spacing={2}>
-              <Grid container item xs={4}>
-                <div className="profile-picture">
-                  <Image src={user?.profile_image?.medium} alt={`Perfil picture of ${username}`} width={95} height={95} />
-                </div>
+        {userInfor.map((user) => (
+          <Grid container direction="row" alignItems="center" justifyContent="center" spacing={2}>
+            <Grid container item xs={4}>
+              <div className="profile-picture">
+                <Image src={user?.profile_image?.medium} alt={`Perfil picture of ${username}`} width={95} height={95} />
+              </div>
+            </Grid>
+            <Grid container direction="row" xs={8} alignItems="center">
+              <Grid item xs={12}>
+                <Typography variant="h2" component="h1">{username}</Typography>
               </Grid>
-              <Grid container direction="row" xs={8} alignItems="center">
-                <Grid item xs={12}>
-                  <Typography variant="h2" component="h1">{username}</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    variant="outlined"
-                    style={{ marginTop: 15, padding: '0 16px' }}
-                  >Enviar mensagem</Button>
-                  <Button
-                    variant="outlined"
-                    style={{ marginTop: 15, padding: '0', marginLeft: 10 }}
-                  ><PersonRoundedIcon /></Button>
-                </Grid>
-              </Grid>
-
-              <Grid container direction="column" justifyContent="space-between">
-                <Typography variant="h1" component="h1">{user?.name}</Typography>
-                <div className="user-bio">
-                  <Typography variant="h3" component="p">{user?.bio}</Typography>
-                </div>
-              </Grid>
-
-              <Grid container direction="row" justifyContent="center"
-                alignItems="center" spacing={1} style={{ height: '550px', marginTop: 5 }}>
-                {isLoad ? <CircularProgress color="secondary" style={{ marginTop: 10 }} /> : (
-                  <>
-                    {userPhotos.map((photo: any) => (
-                      <Grid item xs={4}>
-                        <Image src={photo?.urls?.regular} alt={`photo published of ${username}`} width={230} height={230} />
-                      </Grid>
-                    ))}
-                  </>
-                )}
+              <Grid item xs={12}>
+                <Button
+                  variant="outlined"
+                  style={{ marginTop: 15, padding: '0 16px' }}
+                >Enviar mensagem</Button>
+                <Button
+                  variant="outlined"
+                  style={{ marginTop: 15, padding: '0', marginLeft: 10 }}
+                ><PersonRoundedIcon /></Button>
               </Grid>
             </Grid>
-          ))}
-        </Container>
+
+            <Grid container direction="column" justifyContent="space-between">
+              <Typography variant="h1" component="h1">{user?.name}</Typography>
+              <div className="user-bio">
+                <Typography variant="h3" component="p">{user?.bio}</Typography>
+              </div>
+            </Grid>
+
+            <Grid container direction="row" justifyContent="center"
+              alignItems="center" spacing={1} style={{ height: '550px', marginTop: 5 }}>
+              {isLoad ? <CircularProgress color="secondary" style={{ marginTop: 10 }} /> : (
+                <>
+                  {userPhotos.map((photo: any) => (
+                    <Grid item xs={4}>
+                      <Image src={photo?.urls?.regular} alt={`photo published of ${username}`} width={230} height={230} />
+                    </Grid>
+                  ))}
+                </>
+              )}
+            </Grid>
+          </Grid>
+        ))}
       </UserPerfilStyled>
     </>
   );

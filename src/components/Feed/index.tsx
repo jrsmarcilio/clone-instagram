@@ -5,11 +5,9 @@ import Router from 'next/router'
 import Carousel from "react-elastic-carousel";
 
 import { CarouselFeedStyle } from "./styles";
-import api from '@/service/api';
-import React from 'react';
-import { toast } from 'react-toastify';
 
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, IconButton, Typography } from '@material-ui/core';
+import { Avatar, CardActions, CardContent, CardHeader, CardMedia, Checkbox, IconButton, Typography } from '@material-ui/core';
+
 import MoreVertOutlined from '@material-ui/icons/MoreVertOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ModeCommentOutlinedIcon from '@material-ui/icons/ModeCommentOutlined';
